@@ -95,23 +95,23 @@ jobs:
 
     - name: Seismic notebooks
       run: |
-        pytest examples/seismic/tutorials/04_dask.ipynb
-        pytest examples/seismic/tutorials/04_dask.ipynb
-        pytest examples/seismic/tutorials/04_dask.ipynb
-        pytest examples/seismic/tutorials/04_dask.ipynb
-        pytest examples/seismic/tutorials/04_dask.ipynb
-        pytest examples/seismic/tutorials/04_dask.ipynb
-        pytest examples/seismic/tutorials/04_dask.ipynb
-        pytest examples/seismic/tutorials/04_dask.ipynb
-        pytest examples/seismic/tutorials/04_dask.ipynb
-        pytest examples/seismic/tutorials/04_dask.ipynb
-        pytest examples/seismic/tutorials/04_dask.ipynb
-        pytest examples/seismic/tutorials/04_dask.ipynb
-        pytest examples/seismic/tutorials/04_dask.ipynb
-        pytest examples/seismic/tutorials/04_dask.ipynb
-        pytest examples/seismic/tutorials/04_dask.ipynb
-        pytest examples/seismic/tutorials/04_dask.ipynb
-        pytest examples/seismic/tutorials/04_dask.ipynb
-        pytest examples/seismic/tutorials/04_dask.ipynb
-        pytest examples/seismic/tutorials/04_dask.ipynb
-        pytest examples/seismic/tutorials/04_dask.ipynb
+        pytest examples/seismic/tutorials/
+        pytest examples/seismic/tutorials/
+        pytest examples/seismic/tutorials/
+        pytest examples/seismic/tutorials/
+        pytest examples/seismic/tutorials/
+        pytest examples/seismic/tutorials/
+        pytest examples/seismic/tutorials/
+        pytest examples/seismic/tutorials/
+        pytest examples/seismic/tutorials/
+        pytest examples/seismic/tutorials/
+        pytest examples/seismic/tutorials/
+        pytest examples/seismic/tutorials/
+        pytest examples/seismic/tutorials/
+        pytest examples/seismic/tutorials/
+        pytest examples/seismic/tutorials/
+        pytest examples/seismic/tutorials/
+        pytest examples/seismic/tutorials/
+        pytest examples/seismic/tutorials/
+        pytest examples/seismic/tutorials/
+        pytest examples/seismic/tutorials/
