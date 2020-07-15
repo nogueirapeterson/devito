@@ -101,7 +101,7 @@ jobs:
         cd ..
         git clone https://github.com/dask/distributed.git
         cd distributed
-        git checkout ${{ matrix.version }}
+        #git checkout ${{ matrix.version }}
         python setup.py install
 
     - name: Install dependencies
