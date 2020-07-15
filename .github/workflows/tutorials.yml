@@ -1,3 +1,4 @@
+# j1
 name: Jupyter Notebooks
 
 on: push
@@ -30,7 +31,8 @@ jobs:
           distributed08,
           distributed09,
           distributed10,
-          distributed11
+          distributed11,
+          distributed12
           ]
 
         include:
@@ -70,6 +72,9 @@ jobs:
           - name: distributed11
             version: bf364ce954a4b1530d4c4d9ccae9a661ea074d2e
 
+          - name: distributed12
+            version: bf364ce954a4b1530d4c4d9ccae9a661ea074d2e
+
     steps:
     - name: Checkout devito
       uses: actions/checkout@v1
@@ -95,23 +100,4 @@ jobs:
 
     - name: Seismic notebooks
       run: |
-        py.test --nbval $SKIP examples/seismic/tutorials/
-        py.test --nbval $SKIP examples/seismic/tutorials/
-        py.test --nbval $SKIP examples/seismic/tutorials/
-        py.test --nbval $SKIP examples/seismic/tutorials/
-        py.test --nbval $SKIP examples/seismic/tutorials/
-        py.test --nbval $SKIP examples/seismic/tutorials/
-        py.test --nbval $SKIP examples/seismic/tutorials/
-        py.test --nbval $SKIP examples/seismic/tutorials/
-        py.test --nbval $SKIP examples/seismic/tutorials/
-        py.test --nbval $SKIP examples/seismic/tutorials/
-        py.test --nbval $SKIP examples/seismic/tutorials/
-        py.test --nbval $SKIP examples/seismic/tutorials/
-        py.test --nbval $SKIP examples/seismic/tutorials/
-        py.test --nbval $SKIP examples/seismic/tutorials/
-        py.test --nbval $SKIP examples/seismic/tutorials/
-        py.test --nbval $SKIP examples/seismic/tutorials/
-        py.test --nbval $SKIP examples/seismic/tutorials/
-        py.test --nbval $SKIP examples/seismic/tutorials/
-        py.test --nbval $SKIP examples/seismic/tutorials/
         py.test --nbval $SKIP examples/seismic/tutorials/
