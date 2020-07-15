@@ -37,39 +37,51 @@ jobs:
 
         include:
           - name: distributed00
-            version: 4f878b420b349ee725de5ef64fd5e664dedb8aba
+            #version: 4f878b420b349ee725de5ef64fd5e664dedb8aba
+            version: bf364ce954a4b1530d4c4d9ccae9a661ea074d2e
 
           - name: distributed01
-            version: 44b2358e33a0738c4c70ca96db4242636245e07d
+            #version: 44b2358e33a0738c4c70ca96db4242636245e07d
+            version: bf364ce954a4b1530d4c4d9ccae9a661ea074d2e
 
           - name: distributed02
-            version: 93701f82c2cef46d4e68696bf48af0fc65ea9159
+            #version: 93701f82c2cef46d4e68696bf48af0fc65ea9159
+            version: bf364ce954a4b1530d4c4d9ccae9a661ea074d2e
 
           - name: distributed03
-            version: b4d3a56d8d6e2ee24373e2a3c552246c4664ef74
+            #version: b4d3a56d8d6e2ee24373e2a3c552246c4664ef74
+            version: bf364ce954a4b1530d4c4d9ccae9a661ea074d2e
 
           - name: distributed04
-            version: d4c8bdb062976ad08cb0af6a4521d9a39e781b70
+            #version: d4c8bdb062976ad08cb0af6a4521d9a39e781b70
+            version: bf364ce954a4b1530d4c4d9ccae9a661ea074d2e
 
           - name: distributed05
-            version: 9cfc2ba80584238da9cc65e1f4cedb61c74e6d5d
+            #version: 9cfc2ba80584238da9cc65e1f4cedb61c74e6d5d
+            version: bf364ce954a4b1530d4c4d9ccae9a661ea074d2e
 
           - name: distributed06
-            version: 955b5683ec5f19207bdf49cb3522d7d285ffaed8
+            #version: 955b5683ec5f19207bdf49cb3522d7d285ffaed8
+            version: bf364ce954a4b1530d4c4d9ccae9a661ea074d2e
 
           - name: distributed07
-            version: 5c55601210b817cd89ac10bb5d5969c3f663417a
+            #version: 5c55601210b817cd89ac10bb5d5969c3f663417a
+            version: bf364ce954a4b1530d4c4d9ccae9a661ea074d2e
 
           - name: distributed08
-            version: e58116cf732031311870e1e3395276acadfad766
+            #version: e58116cf732031311870e1e3395276acadfad766
+            version: bf364ce954a4b1530d4c4d9ccae9a661ea074d2e
 
           - name: distributed09
-            version: db5e88cd88a89cdb8420f95359090b94c1d341a3
+            #version: db5e88cd88a89cdb8420f95359090b94c1d341a3
+            version: bf364ce954a4b1530d4c4d9ccae9a661ea074d2e
 
           - name: distributed10
-            version: d1c42db85181a078527aa1492e927972b997c21f
+            #version: d1c42db85181a078527aa1492e927972b997c21f
+            version: bf364ce954a4b1530d4c4d9ccae9a661ea074d2e
 
           - name: distributed11
+            #version: bf364ce954a4b1530d4c4d9ccae9a661ea074d2e
             version: bf364ce954a4b1530d4c4d9ccae9a661ea074d2e
 
           - name: distributed12
