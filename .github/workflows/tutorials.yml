@@ -104,3 +104,23 @@ jobs:
         py.test --nbval $SKIP examples/seismic/tutorials/
         py.test --nbval $SKIP examples/seismic/tutorials/
         py.test --nbval $SKIP examples/seismic/tutorials/
+        py.test --nbval $SKIP examples/seismic/tutorials/
+        py.test --nbval $SKIP examples/seismic/tutorials/
+        py.test --nbval $SKIP examples/seismic/tutorials/
+        py.test --nbval $SKIP examples/seismic/tutorials/
+        py.test --nbval $SKIP examples/seismic/tutorials/
+        py.test --nbval $SKIP examples/seismic/tutorials/
+        py.test --nbval $SKIP examples/seismic/tutorials/
+        py.test --nbval $SKIP examples/seismic/tutorials/
+        py.test --nbval $SKIP examples/seismic/tutorials/
+        py.test --nbval $SKIP examples/seismic/tutorials/
+        py.test --nbval $SKIP examples/seismic/tutorials/
+        py.test --nbval $SKIP examples/seismic/tutorials/
+        py.test --nbval $SKIP examples/seismic/tutorials/
+        py.test --nbval $SKIP examples/seismic/tutorials/
+        py.test --nbval $SKIP examples/seismic/tutorials/
+        py.test --nbval $SKIP examples/seismic/tutorials/
+        py.test --nbval $SKIP examples/seismic/tutorials/
+        py.test --nbval $SKIP examples/seismic/tutorials/
+        py.test --nbval $SKIP examples/seismic/tutorials/
+        py.test --nbval $SKIP examples/seismic/tutorials/
