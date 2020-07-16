@@ -1,126 +1,105 @@
 name: Jupyter Notebooks
 
-on:
-  # Trigger the workflow on push or pull request,
-  # but only for the master branch
-  push:
-    branches:
-      - master
-  pull_request:
-    branches:
-      - master
+on: push
 
 jobs:
   tutorials:
     name: ${{ matrix.name }}
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
 
     env:
-      DEVITO_ARCH: "${{ matrix.compiler }}"
-      DEVITO_LANGUAGE: ${{ matrix.language }}
+      DEVITO_ARCH: "gcc-7"
+      DEVITO_LANGUAGE: "openmp"
       DEVITO_BACKEND: "core"
-      PYTHON_VERSION: "3.7"
-      RUN_CMD: ""
+      CC: "gcc-7"
+      CXX: "g++-7"
 
     strategy:
       # Prevent all build to stop if a single one fails
       fail-fast: false
       matrix:
         name: [
-          tutos-ubuntu-gcc-py37,
-          tutos-osx-gcc-py37,
-          tutos-osx-clang-py37,
-          tutos-docker-gcc-py36
+          distributed00,
+          distributed01,
+          distributed02,
+          distributed03,
+          distributed04,
+          distributed05,
+          distributed06,
+          distributed07,
+          distributed08,
+          distributed09,
+          distributed10,
+          distributed11
           ]
 
         include:
-          - name: tutos-ubuntu-gcc-py37
-            os: ubuntu-16.04
-            compiler: gcc-7
-            language: "openmp"
+          - name: distributed00
+            version: 4f878b420b349ee725de5ef64fd5e664dedb8aba
 
-          - name: tutos-osx-gcc-py37
-            os: macos-latest
-            compiler: gcc-9
-            language: "openmp"
+          - name: distributed01
+            version: 44b2358e33a0738c4c70ca96db4242636245e07d
 
-          - name: tutos-osx-clang-py37
-            os: macos-latest
-            compiler: clang
-            language: "C"
+          - name: distributed02
+            version: 93701f82c2cef46d4e68696bf48af0fc65ea9159
 
-          - name: tutos-docker-gcc-py36
-            os: ubuntu-latest
-            compiler: gcc
-            language: "openmp"
+          - name: distributed03
+            version: b4d3a56d8d6e2ee24373e2a3c552246c4664ef74
+
+          - name: distributed04
+            version: d4c8bdb062976ad08cb0af6a4521d9a39e781b70
+
+          - name: distributed05
+            version: 9cfc2ba80584238da9cc65e1f4cedb61c74e6d5d
+
+          - name: distributed06
+            version: 955b5683ec5f19207bdf49cb3522d7d285ffaed8
+
+          - name: distributed07
+            version: 5c55601210b817cd89ac10bb5d5969c3f663417a
+
+          - name: distributed08
+            version: e58116cf732031311870e1e3395276acadfad766
+
+          - name: distributed09
+            version: db5e88cd88a89cdb8420f95359090b94c1d341a3
+
+          - name: distributed10
+            version: d1c42db85181a078527aa1492e927972b997c21f
+
+          - name: distributed11
+            version: bf364ce954a4b1530d4c4d9ccae9a661ea074d2e
 
     steps:
     - name: Checkout devito
       uses: actions/checkout@v1
 
     - name: Set up Python 3.7
-      if: matrix.name != 'tutos-docker-gcc-py36'
       uses: actions/setup-python@v1
       with:
         python-version: 3.7
 
-    - name: Install compilers for OSX
-      if: runner.os == 'macOS'
+    - name: Set distributed
       run: |
-        if [ "${{ matrix.compiler }}" = "gcc-9" ]; then
-          brew install gcc
-        else
-          sudo xcode-select -s /Applications/Xcode_11.app/Contents/Developer
-        fi
-        # dask error on osx, skip dask tuto
-        echo "::set-env name=SKIP::--deselect=examples/seismic/tutorials/04_dask.ipynb"
-
-    - name: Build docker image
-      if: matrix.name == 'tutos-docker-gcc-py36'
-      run: |
-          docker build . --file docker/Dockerfile --tag devito_img
-          echo "::set-env name=RUN_CMD::docker run --rm --name testrun devito_img"
-
+        cd ..
+        git clone https://github.com/dask/distributed.git
+        cd distributed
+        git checkout ${{ matrix.version }}
+        python setup.py install
     - name: Install dependencies
-      if: matrix.name != 'tutos-docker-gcc-py36'
       run: |
         python -m pip install --upgrade pip
         pip install -e .
         pip install matplotlib
-
     - name: Seismic notebooks
       run: |
-        $RUN_CMD py.test --nbval --cov . --cov-config=.coveragerc --cov-report=xml:seis_coverage.xml $SKIP examples/seismic/tutorials/
-        $RUN_CMD py.test --nbval --cov . --cov-config=.coveragerc --cov-report=xml:acc_coverage.xml $SKIP examples/seismic/acoustic/accuracy.ipynb
-
-    - name: Self-adjoint notebooks
-      run: |
-        $RUN_CMD py.test --nbval --cov . --cov-config=.coveragerc --cov-report=xml:sa_coverage.xml $SKIP examples/seismic/self_adjoint/
-
-    - name: CFD notebooks
-      run: |
-        $RUN_CMD py.test --nbval --cov . --cov-config=.coveragerc --cov-report=xml:cfd_coverage.xml examples/cfd
-
-    - name: User api notebooks
-      run: |
-        $RUN_CMD py.test --nbval --cov . --cov-config=.coveragerc --cov-report=xml:api_coverage.xml examples/userapi
-
-    - name: Compiler notebooks
-      run: |
-        $RUN_CMD py.test --nbval --cov . --cov-config=.coveragerc --cov-report=xml:comp_coverage.xml examples/compiler
-        
-    - name: Finance notebooks
-      run: |
-        $RUN_CMD py.test --nbval --cov . --cov-config=.coveragerc --cov-report=xml:comp_coverage.xml examples/finance
-
-    - name: Performance notebooks
-      run: |
-        $RUN_CMD py.test --nbval --cov . --cov-config=.coveragerc --cov-report=xml:comp_coverage.xml examples/performance
-
-    - name: Upload coverage to Codecov
-      if: matrix.name != 'tutos-docker-gcc-py36'
-      uses: codecov/codecov-action@v1.0.6
-      with:
-        token: ${{ secrets.CODECOV_TOKEN }}
-        name: ${{ matrix.name }}
-        file: ./*_coverage.xml
+        py.test --nbval $SKIP examples/seismic/tutorials/
+        py.test --nbval $SKIP examples/seismic/tutorials/
+        py.test --nbval $SKIP examples/seismic/tutorials/
+        py.test --nbval $SKIP examples/seismic/tutorials/
+        py.test --nbval $SKIP examples/seismic/tutorials/
+        py.test --nbval $SKIP examples/seismic/tutorials/
+        py.test --nbval $SKIP examples/seismic/tutorials/
+        py.test --nbval $SKIP examples/seismic/tutorials/
+        py.test --nbval $SKIP examples/seismic/tutorials/
+        py.test --nbval $SKIP examples/seismic/tutorials/
