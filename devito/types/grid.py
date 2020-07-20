@@ -295,6 +295,9 @@ class Grid(ArgProvider):
         self._distributor = Distributor(self.shape, self.dimensions)
 
 
+hack_subdims = []
+
+
 class SubDomain(object):
 
     """
@@ -391,6 +394,14 @@ class SubDomain(object):
                         sdshape.append(thickness)
                     else:
                         raise ValueError("Expected sides 'left|right', not `%s`" % side)
+
+        #if self.name == 'bundle0':
+        #    self._dimensions = tuple(sub_dimensions)
+        #    hack_subdims.extend(sub_dimensions)
+        #elif self.name == 'bundle1':
+        #    self._dimensions = tuple(hack_subdims[:-1]) + (sub_dimensions[-1],)
+        #else:
+        #    self._dimensions = tuple(sub_dimensions)
         self._dimensions = tuple(sub_dimensions)
 
         # Compute the SubDomain shape

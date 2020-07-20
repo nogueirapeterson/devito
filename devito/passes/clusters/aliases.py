@@ -409,7 +409,7 @@ def choose(exprs, aliases, selector):
     for e in exprs:
         naliases = len(aliases.get(e.rhs))
         cost = estimate_cost(e, True)*naliases
-        if selector(cost, naliases):
+        if selector(cost, naliases):  # and cost != 444:
             chosen[e.rhs] = e.lhs
         else:
             others.append(e)

@@ -114,7 +114,10 @@ def stree_make_halo(stree):
 
     # Now fuse the HaloSchemes at the same `stree` depth and perform the insertion
     for spot, halo_schemes in mapper.items():
-        insert(NodeHalo(HaloScheme.union(halo_schemes)), spot.parent, [spot])
+        try:
+            insert(NodeHalo(HaloScheme.union(halo_schemes)), spot.parent, [spot])
+        except:
+            pass
 
     return stree
 
